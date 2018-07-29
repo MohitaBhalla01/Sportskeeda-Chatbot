@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <meta name="ad.size" content="width=300,height=250">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sportskeeds Banner AI Ad</title>
+      
+        <link rel="stylesheet" type="text/css" href="app.css">
+        <script src="angular15.js"></script>
+        <script src="angular-sanitize.min.js"></script>
+        <script src="index.js"></script>
+    </head>
+    <body>
+        
+    <div  ng-app="addBanner" ng-controller="addBannerController" ng-init="page_load()">
+
+
+
+        <div id="container">
+            <form method="get" ng-cloak autocomplete="off">
+                <div style="position: relative;height:120px;">
+                      <div id="bg-exit"></div>
+                    <div ng-show="showWana" id="wannachat">
+<p><center style="font-size: 28px; font-family: initial; color:beige; margin-top: -78px; margin-left: 14px; width: 108%; font-family: Comic Sans MS; font-style: normal; border-radius: 6px;">Welcome Sportskeeda Readers.Let's chat Say Hi!
+</center></p>
+   </div>
+                    <div style="position:absolute;height:auto;width:70%; text-align: center;word-wrap:hyphenate; margin-top: 28px;margin-left: 15px">
+
+                      
+                        <label ng-hide="showWana" ng-hide="userMsg==''" class="usrmg" for="">{{userMsg}}</label>
+                        <br />
+                        <br />
+                        <label  ng-hide="showWana" class="botmg"  ng-bind-html="message"></label>
+
+
+                       <span style="float: right;
+    margin: 5px;
+    color: white;
+    border: 1.5px solid #c358586b;
+    padding: 2px;
+     border-radius: 6px;
+   font-size: 14px;
+    background-color: 	rgba(0, 0, 0, 0.7);"  ng-repeat="item in suggestion" ng-click="getReply(item.title)">{{item.title}}</span>
+
+
+<span style="float: right;
+    margin: 5px;
+    color: white;
+    border: 1.5px solid #c358586b;
+    padding: 5px;
+    border-radius: 12px;
+    background-color:rgba(0, 0, 0, 0.7);"  ng-repeat="item in link_suggestion" ng-click="redirect(item.url)">{{item.title}}</span>
+
+
+
+                    </div>
+
+
+                    <div class="txtinput">
+                        <input ng-style="fordStyle" style="float:left; line-height: 1em;" type="text" id="fordque" class="form-control"  ng-model="search" name="name" autocomplete="off" >
+                        
+                        <button id="hs" ng-click="getReply(search)"></button>
+                    </div>
+                    
+                    
+                    <div style="margin-left:100px;position:fixed; top:72.5%;">  
+                      <!--  ng-repeat="item in  suggestion"-->
+                       <!-- <centre> <a  href="https://www.yesbank.in/" target="_blank"><span class="btn btn-primary" style="color:white; font-size: 12px;">
+                            KNOW MORE</span></a></centre> -->
+                    </div>
+                    <div style="margin-right:3px;position:fixed;">   
+                        <div class="multibutton" ng-show="suggestion.length>0">
+                           
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    /*
+    jQuery placeholderTypewriter plugin
+    */
+    (function ($) {
+    "use strict";
+    $.fn.placeholderTypewriter = function (options) {
+    // Plugin Settings
+    var settings = $.extend({
+    delay: 50,
+    pause: 1000,
+    text: []
+    }, options);
+    // Type given string in placeholder
+    function typeString($target, index, cursorPosition, callback) {
+    // Get text
+    var text = settings.text[index];
+    // Get placeholder, type next character
+    var placeholder = $target.attr('placeholder');
+    $target.attr('placeholder', placeholder + text[cursorPosition]);
+    // Type next character
+    if (cursorPosition < text.length - 1) {
+    setTimeout(function () {
+    typeString($target, index, cursorPosition + 1, callback);
+    }, settings.delay);
+    return true;
+    }
+    // Callback if animation is finished
+    callback();
+    }
+    // Delete string in placeholder
+    function deleteString($target, callback) {
+    // Get placeholder
+    var placeholder = $target.attr('placeholder');
+    var length = placeholder.length;
+    // Delete last character
+    $target.attr('placeholder', placeholder.substr(0, length - 1));
+    // Delete next character
+    if (length > 1) {
+    setTimeout(function () {
+    deleteString($target, callback)
+    }, settings.delay);
+    return true;
+    }
+    // Callback if animation is finished
+    callback();
+    }
+    // Loop typing animation
+    function loopTyping($target, index) {
+    // Clear Placeholder
+    $target.attr('placeholder', '');
+    // Type string
+    typeString($target, index, 0, function () {
+    // Pause before deleting string
+    setTimeout(function () {
+    // Delete string
+    deleteString($target, function () {
+    // Start loop over
+    loopTyping($target, (index + 1) % settings.text.length)
+    })
+    }, settings.pause);
+    })
+    }
+    return this.each(function () {
+    loopTyping($(this), 0);
+    });
+    };
+    }(jQuery));
+    $('#fordque').placeholderTypewriter({ text: ["Ask your query here.."] });
+    </script>
+</body>
+</html>
